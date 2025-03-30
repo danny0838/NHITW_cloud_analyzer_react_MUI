@@ -91,7 +91,7 @@ export const shouldBeBold = (medication, settings) => {
 
 // 根據看診類型獲取顏色
 export const getVisitTypeColor = (visitType) => {
-  switch(visitType) {
+  switch (visitType) {
     case "急診":
       return "#c62828"; // 較柔和的紅色
     case "住診":

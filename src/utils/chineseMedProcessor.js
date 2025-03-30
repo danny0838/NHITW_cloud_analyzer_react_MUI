@@ -183,7 +183,7 @@ export const chineseMedProcessor = {
       }
       mapTotalDosagePerHosp.set(key, group.dosage + (mapTotalDosagePerHosp.get(key) || 0));
     }
-    
+
     return Object.values(grouped)
       .sort((a, b) => {
         // date

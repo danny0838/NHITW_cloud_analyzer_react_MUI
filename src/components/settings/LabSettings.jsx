@@ -39,7 +39,7 @@ export const resetLabCopyItemsToDefault = (callback = () => {}) => {
     { customCopyItems: DEFAULT_LAB_COPY_ITEMS },
     () => {
       // 通知其他組件設定已更改
-      chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         if (tabs[0]) {
           chrome.tabs.sendMessage(tabs[0].id, {
             action: "settingChanged",
@@ -115,7 +115,7 @@ const LabSettings = () => {
     setSettings(updatedSettings);
     chrome.storage.sync.set({ customCopyItems: tempCustomCopyItems }, () => {
       // 發送消息給其他組件更新
-      chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         if (tabs[0]) {
           chrome.tabs.sendMessage(tabs[0].id, {
             action: "settingChanged",

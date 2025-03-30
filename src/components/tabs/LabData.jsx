@@ -152,7 +152,7 @@ const LabData = ({ groupedLabs, settings, labSettings, generalDisplaySettings })
 
   // 確定欄數設置 (可以根據需要調整)
   const getColumnCount = () => {
-    switch(completeLabSettings.displayFormat) {
+    switch (completeLabSettings.displayFormat) {
       case "twoColumn": return 2;
       case "threeColumn": return 3;
       case "fourColumn": return 4;

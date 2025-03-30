@@ -183,7 +183,6 @@ const Overview_LabTests = ({ groupedLabs = [], labData, overviewSettings = {}, g
                         lab.itemName.toLowerCase().includes('complete blood count') ||
                         lab.itemName.toLowerCase().includes('血球計數')
                       ))) {
-
                     // console.log("Debug - Found CBC lab item:", lab);
 
                     // Process based on the item details using our helper functions

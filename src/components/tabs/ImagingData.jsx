@@ -29,7 +29,7 @@ const viewImage = async (imageParams) => {
     // 方法1: 直接嘗試從 chrome storage 獲取
     try {
       await new Promise((resolve) => {
-        chrome.storage.local.get('nhiToken', function(result) {
+        chrome.storage.local.get('nhiToken', function (result) {
           if (result && result.nhiToken) {
             authToken = result.nhiToken;
           }
@@ -524,7 +524,7 @@ const ReportImagingTable = ({ data, generalDisplaySettings }) => {
                             {item.images.slice(rowIndex * 5, (rowIndex + 1) * 5).map((img, colIndex) => {
                               const imgIndex = rowIndex * 5 + colIndex;
                               return (
-                                <Tooltip key={imgIndex} title={`查看影像 ${imgIndex+1}`}>
+                                <Tooltip key={imgIndex} title={`查看影像 ${imgIndex + 1}`}>
                                   <IconButton
                                     color="primary"
                                     size="small"

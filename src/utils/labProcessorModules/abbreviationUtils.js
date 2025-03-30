@@ -104,8 +104,8 @@ const getAbbreviation = (orderCode, unitData = '', itemName = '') => {
     // 當 assayitemName = "U-ACR" 或 "Albumin/Creatinine" 或 包含"/CRE"時
     if (itemName.toLowerCase().includes("u-acr") ||
         itemName.toLowerCase().includes("albumin/creatinine") ||
-        itemName.toLowerCase().includes("/cre")||
-        itemName.toLowerCase().includes("acr-u") ) {
+        itemName.toLowerCase().includes("/cre") ||
+        itemName.toLowerCase().includes("acr-u")) {
       return "UACR";
     }
 

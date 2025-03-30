@@ -273,7 +273,7 @@ const MedicationList = ({
 
   // 根據看診類型獲取顏色
   const getVisitTypeColor = (visitType) => {
-    switch(visitType) {
+    switch (visitType) {
       case "急診":
         return "#c62828"; // 較柔和的紅色
       case "住診":

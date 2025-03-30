@@ -2191,7 +2191,7 @@ describe('utils/chineseMedProcessor', function () {
 
   describe.skip('.getMedicationText');
 
-  describe('.formatChineseMedList',  function () {
+  describe('.formatChineseMedList', function () {
     it('should honor `format`, `showDiagnosis`, `showEffectName`', function () {
       var medications = [
         {

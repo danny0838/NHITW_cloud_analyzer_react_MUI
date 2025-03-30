@@ -27,7 +27,7 @@ const API_ENDPOINTS = {
 // Add listeners for new endpoints
 Object.entries(API_ENDPOINTS).forEach(([type, endpoint]) => {
   chrome.webRequest.onBeforeRequest.addListener(
-    function(details) {
+    function (details) {
       if (details.method === "GET" && details.url.includes(endpoint)) {
         console.log(`Detected ${type} API request:`, details.url);
         chrome.tabs.sendMessage(details.tabId, {
@@ -43,7 +43,7 @@ Object.entries(API_ENDPOINTS).forEach(([type, endpoint]) => {
   );
 
   chrome.webRequest.onCompleted.addListener(
-    function(details) {
+    function (details) {
       if (details.method === "GET" && details.url.includes(endpoint)) {
         console.log(`Completed ${type} API request:`, details.url);
         chrome.tabs.sendMessage(details.tabId, {
@@ -61,7 +61,7 @@ Object.entries(API_ENDPOINTS).forEach(([type, endpoint]) => {
 
 
 chrome.webRequest.onBeforeRequest.addListener(
-  function(details) {
+  function (details) {
     if (details.method === "GET" &&
         details.url.includes("medcloud2.nhi.gov.tw/imu/api/imue0090/imue0090s02/get-data")) {
       // console.log("Detected Chinese medicine API request:", details.url);
@@ -78,7 +78,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 );
 
 chrome.webRequest.onBeforeRequest.addListener(
-  function(details) {
+  function (details) {
     if (details.method === "GET" &&
         details.url.includes("medcloud2.nhi.gov.tw/imu/api/imue0130/imue0130s02/get-data")) {
       // console.log("Detected imaging API request:", details.url);
@@ -96,7 +96,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 
 // Add completion listeners for new APIs
 chrome.webRequest.onCompleted.addListener(
-  function(details) {
+  function (details) {
     if (details.method === "GET" &&
         details.url.includes("medcloud2.nhi.gov.tw/imu/api/imue0090/imue0090s02/get-data")) {
       // console.log("Completed Chinese medicine API request:", details.url);
@@ -113,7 +113,7 @@ chrome.webRequest.onCompleted.addListener(
 );
 
 chrome.webRequest.onCompleted.addListener(
-  function(details) {
+  function (details) {
     if (details.method === "GET" &&
         details.url.includes("medcloud2.nhi.gov.tw/imu/api/imue0130/imue0130s02/get-data")) {
       // console.log("Completed imaging API request:", details.url);
@@ -130,7 +130,7 @@ chrome.webRequest.onCompleted.addListener(
 );
 
 chrome.webRequest.onBeforeRequest.addListener(
-  function(details) {
+  function (details) {
     if (details.method === "GET" &&
         details.url.includes("medcloud2.nhi.gov.tw/imu/api/imue0008/imue0008s02/get-data")) {
       // console.log("Detected medication history API request:", details.url);
@@ -148,7 +148,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 
 // 監聽檢驗資料 API 請求
 chrome.webRequest.onBeforeRequest.addListener(
-  function(details) {
+  function (details) {
     if (details.method === "GET" &&
         details.url.includes("medcloud2.nhi.gov.tw/imu/api/imue0060/imue0060s02/get-data")) {
       // console.log("Detected lab data API request:", details.url);
@@ -166,7 +166,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 
 // 監聽藥歷 API 請求完成
 chrome.webRequest.onCompleted.addListener(
-  function(details) {
+  function (details) {
     if (details.method === "GET" &&
         details.url.includes("medcloud2.nhi.gov.tw/imu/api/imue0008/imue0008s02/get-data")) {
       // console.log("Completed medication history API request:", details.url, "Status:", details.statusCode);
@@ -185,7 +185,7 @@ chrome.webRequest.onCompleted.addListener(
 
 // 監聽檢驗資料 API 請求完成
 chrome.webRequest.onCompleted.addListener(
-  function(details) {
+  function (details) {
     if (details.method === "GET" &&
         details.url.includes("medcloud2.nhi.gov.tw/imu/api/imue0060/imue0060s02/get-data")) {
       // console.log("Completed lab data API request:", details.url, "Status:", details.statusCode);
@@ -204,7 +204,7 @@ chrome.webRequest.onCompleted.addListener(
 
 // Monitor patient summary API requests
 chrome.webRequest.onBeforeRequest.addListener(
-  function(details) {
+  function (details) {
     if (details.method === "GET" &&
         details.url.includes("medcloud2.nhi.gov.tw/imu/api/imue2000/imue2000s01/get-summary")) {
       // console.log("Detected patient summary API request:", details.url);
@@ -221,7 +221,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 );
 
 chrome.webRequest.onCompleted.addListener(
-  function(details) {
+  function (details) {
     if (details.method === "GET" &&
         details.url.includes("medcloud2.nhi.gov.tw/imu/api/imue2000/imue2000s01/get-summary")) {
       // console.log("Completed patient summary API request:", details.url);
@@ -261,7 +261,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       chrome.storage.local.set({
         [dataType]: message.data,
         currentUserSession: message.userSession || currentSessionData.currentUserSession
-      }, function() {
+      }, function () {
         // console.log(`${dataType} saved to storage`);
         chrome.action.setBadgeText({ text: "✓" });
         chrome.action.setBadgeBackgroundColor({ color: "#4CAF50" });
@@ -291,7 +291,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       chrome.storage.local.set({
         chinesemedData: message.data,
         currentUserSession: message.userSession || currentSessionData.currentUserSession
-      }, function() {
+      }, function () {
         // console.log("Chinese medicine data saved to storage");
         chrome.action.setBadgeText({ text: "✓" });
         chrome.action.setBadgeBackgroundColor({ color: "#4CAF50" });
@@ -320,7 +320,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       chrome.storage.local.set({
         imagingData: message.data,
         currentUserSession: message.userSession || currentSessionData.currentUserSession
-      }, function() {
+      }, function () {
         // console.log("Imaging data saved to storage");
         chrome.action.setBadgeText({ text: "✓" });
         chrome.action.setBadgeBackgroundColor({ color: "#4CAF50" });
@@ -369,7 +369,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       'dischargeData',
       'medDaysData',
       'patientSummaryData'  // Include in removal
-    ], function() {
+    ], function () {
       // console.log("Storage data cleared due to user session change");
       chrome.action.setBadgeText({ text: "" });
     });
@@ -419,7 +419,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     chrome.storage.local.set({
       medicationData: message.data,
       currentUserSession: message.userSession || currentSessionData.currentUserSession
-    }, function() {
+    }, function () {
       // console.log("Medication data saved to storage");
       chrome.action.setBadgeText({ text: "✓" });
       chrome.action.setBadgeBackgroundColor({ color: "#4CAF50" });
@@ -455,7 +455,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     chrome.storage.local.set({
       labData: message.data,
       currentUserSession: message.userSession || currentSessionData.currentUserSession
-    }, function() {
+    }, function () {
       // console.log("Lab data saved to storage");
       chrome.action.setBadgeText({ text: "✓" });
       chrome.action.setBadgeBackgroundColor({ color: "#4CAF50" });
@@ -627,7 +627,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     };
 
     // 同時清除儲存的資料
-    chrome.storage.local.remove(['medicationData', 'labData', 'currentUserSession'], function() {
+    chrome.storage.local.remove(['medicationData', 'labData', 'currentUserSession'], function () {
       console.log("Storage data cleared due to logout");
       chrome.action.setBadgeText({ text: "" });
     });
@@ -665,7 +665,7 @@ function saveDataToStorage(type, data, userSession) {
     // data?.rObject ? `${data.rObject.length} records` : 'No records or invalid format');
 
   return new Promise((resolve) => {
-    chrome.storage.local.set(storageObj, function() {
+    chrome.storage.local.set(storageObj, function () {
       // console.log(`${type} data saved to storage with key ${storageKey}`);
       chrome.action.setBadgeText({ text: "✓" });
       chrome.action.setBadgeBackgroundColor({ color: "#4CAF50" });
